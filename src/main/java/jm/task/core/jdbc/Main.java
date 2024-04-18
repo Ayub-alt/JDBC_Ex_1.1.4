@@ -11,12 +11,13 @@ public class Main {
     public static void main(String[] args) {
 
         //Getting connection
-        Util util = new Util();
-        util.getConnection();
+       // Util util = new Util();
+        //util.getConnection();
 
         //Creating an object of DAO class
         UserDao userDB = new UserDaoJDBCImpl();
-        userDB.createUsersTable();
+
+        //Creating table of users
         userDB.createUsersTable();
 
         //Creating 4 users to add to DB
@@ -27,13 +28,16 @@ public class Main {
 
         //Adding users to DB
         userDB.saveUser(user1.getName(), user1.getLastName(), user1.getAge());
-        System.out.println(user1.getName() + " was successfully added!");
+        System.out.printf("User с именем — %s добавлен в базу данных\n", user1.getName());
+
         userDB.saveUser(user2.getName(), user2.getLastName(), user2.getAge());
-        System.out.println(user2.getName() + " was successfully added!");
+        System.out.printf("User с именем — %s добавлен в базу данных\n", user2.getName());
+
         userDB.saveUser(user3.getName(), user3.getLastName(), user3.getAge());
-        System.out.println(user3.getName() + " was successfully added!");
+        System.out.printf("User с именем — %s добавлен в базу данных\n", user3.getName());
+
         userDB.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
-        System.out.println(user4.getName() + " was successfully added!");
+        System.out.printf("User с именем — %s добавлен в базу данных\n", user4.getName());
 
         //Printing all users from DB
         System.out.println("\nUsers from Database: ");
@@ -44,14 +48,9 @@ public class Main {
 
         //Clearing the 'user' table
         userDB.cleanUsersTable();
-        System.out.println("\nThe table has been cleared!");
 
         //Deleting the 'user' table
         userDB.dropUsersTable();
-        userDB.dropUsersTable();
-        System.out.println("\nThe table has been dropped!");
-
-
 
     }
 }
