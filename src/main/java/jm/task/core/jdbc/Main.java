@@ -1,6 +1,7 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
@@ -24,6 +25,7 @@ public class Main {
         User user3 = new User("UserName3", "UserLastName3", (byte) 4);
         User user4 = new User("UserName4", "UserLastName4", (byte) 14);
 
+
         //Adding users to DB
         userDB.saveUser(user1.getName(), user1.getLastName(), user1.getAge());
         System.out.printf("User с именем — %s добавлен в базу данных\n", user1.getName());
@@ -37,6 +39,9 @@ public class Main {
         userDB.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
         System.out.printf("User с именем — %s добавлен в базу данных\n", user4.getName());
 
+
+
+
         //Printing all users from DB
         System.out.println("\nUsers from Database: ");
         List<User> allUsers = userDB.getAllUsers();
@@ -44,11 +49,15 @@ public class Main {
             System.out.println(user.toString());
         }
 
+
+
+
         //Clearing the 'user' table
         userDB.cleanUsersTable();
 
         //Deleting the 'user' table
         userDB.dropUsersTable();
+
 
     }
 }
